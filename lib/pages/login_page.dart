@@ -1,10 +1,12 @@
+import 'package:ecosync_app/data/model/user.dart';
+import 'package:ecosync_app/pages/register_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_full_course/config/app_icons.dart';
-import 'package:flutter_full_course/config/app_routes.dart';
-import 'package:flutter_full_course/config/app_strings.dart';
-import 'package:flutter_full_course/provider/app_repo.dart';
+import 'package:ecosync_app/config/app_icons.dart';
+import 'package:ecosync_app/config/app_routes.dart';
+import 'package:ecosync_app/config/app_strings.dart';
+import 'package:ecosync_app/provider/app_repo.dart';
 
-import 'package:flutter_full_course/provider/login_provider.dart';
+import 'package:ecosync_app/provider/login_provider.dart';
 
 import 'package:provider/provider.dart';
 
@@ -86,14 +88,26 @@ class LoginPage extends StatelessWidget {
                   height: 48,
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {
-                      context.read<LoginProvider>().login().then((value) {
-                        context.read<AppRepo>().user = value.user;
-                        context.read<AppRepo>().token = value.token;
-                        Navigator.of(context)
-                            .pushReplacementNamed(AppRoutes.main);
-                      });
-                    },
+                      onPressed: () {
+
+                        // Attempt to log in
+                        context.read<LoginProvider>().login().then((value) {
+                          // Hide loading indicator
+
+                          // Update the AppRepo with user details and token
+                          context.read<AppRepo>().user = value.user;
+                          context.read<AppRepo>().token = value.token;
+
+                          // Navigate to the main page
+                          Navigator.of(context)
+                              .pushReplacementNamed(AppRoutes.main);
+                        }).catchError((error) {
+
+                          // Handle errors, possibly showing a dialog or a Snackbar
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Login Failed: $error')));
+                        });
+                      },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(255, 98, 138, 225),
                       foregroundColor: Color.fromARGB(255, 0, 0, 0),
@@ -102,9 +116,19 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 Spacer(),
-                
-               
-                Spacer(),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Don't have an account?"),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushReplacementNamed(AppRoutes.register);
+                        },
+                        child: const Text("Signup"),
+                      ),
+                    ],
+                  ),
               ],
             ),
           ),

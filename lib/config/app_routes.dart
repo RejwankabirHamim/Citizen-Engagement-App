@@ -1,11 +1,12 @@
-// import 'package:flutter_full_course/data/model//.dart';
-import 'package:flutter_full_course/pages/edit_profile_page.dart';
-import 'package:flutter_full_course/pages/home_page.dart';
-import 'package:flutter_full_course/pages/login_page.dart';
-import 'package:flutter_full_course/pages/main_page.dart';
-import 'package:flutter_full_course/pages/nearby_page.dart';
-import 'package:flutter_full_course/pages/user_page.dart';
-import 'package:flutter_full_course/provider/login_provider.dart';
+// import 'package:ecosync_app/data/model//.dart';
+import 'package:ecosync_app/pages/edit_profile_page.dart';
+import 'package:ecosync_app/pages/home_page.dart';
+import 'package:ecosync_app/pages/login_page.dart';
+import 'package:ecosync_app/pages/main_page.dart';
+import 'package:ecosync_app/pages/nearby_page.dart';
+import 'package:ecosync_app/pages/register_page.dart';
+import 'package:ecosync_app/pages/user_page.dart';
+import 'package:ecosync_app/provider/login_provider.dart';
 import 'package:provider/provider.dart';
 
 class AppRoutes {
@@ -19,6 +20,7 @@ class AppRoutes {
     editProfile: (context) => EditProfilePage(),
     nearby: (context) => NearbyPage(),
     user: (context) => UserPage(),
+    register: (context) => RegisterPage(),
   };
 
   static const login = '/';
@@ -27,4 +29,5 @@ class AppRoutes {
   static const editProfile = '/edit_profile';
   static const nearby = '/nearby';
   static const user = '/user';
+  static const register='/register';
 }

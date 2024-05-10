@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter_full_course/config/app_config.dart';
-import 'package:flutter_full_course/data/response/login_response.dart';
-import 'package:flutter_full_course/data/model/user.dart';
-import 'package:flutter_full_course/data/service/base_service.dart';
+import 'package:ecosync_app/config/app_config.dart';
+import 'package:ecosync_app/data/response/login_response.dart';
+import 'package:ecosync_app/data/model/user.dart';
+import 'package:ecosync_app/data/service/base_service.dart';
 import 'package:http/http.dart' as http;
 
 class LoginService extends ServiceBase<LoginResponse> {

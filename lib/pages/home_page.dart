@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_full_course/components/post_item.dart';
-import 'package:flutter_full_course/components/toolbar.dart';
-import 'package:flutter_full_course/config/app_icons.dart';
-import 'package:flutter_full_course/config/app_routes.dart';
-import 'package:flutter_full_course/config/app_strings.dart';
-import 'package:flutter_full_course/data/model/post.dart';
-import 'package:flutter_full_course/provider/post_provider.dart';
+import 'package:ecosync_app/components/post_item.dart';
+import 'package:ecosync_app/components/toolbar.dart';
+import 'package:ecosync_app/config/app_icons.dart';
+import 'package:ecosync_app/config/app_routes.dart';
+import 'package:ecosync_app/config/app_strings.dart';
+import 'package:ecosync_app/data/model/post.dart';
+import 'package:ecosync_app/provider/post_provider.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 

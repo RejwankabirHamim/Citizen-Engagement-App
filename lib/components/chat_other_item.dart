@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_full_course/components/user_avatar.dart';
-import 'package:flutter_full_course/data/model/chat.dart';
+import 'package:ecosync_app/components/user_avatar.dart';
+import 'package:ecosync_app/data/model/chat.dart';
 
 import '../styles/app_colors.dart';
 

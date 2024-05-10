@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_full_course/components/toolbar.dart';
-import 'package:flutter_full_course/components/user_page_item.dart';
-import 'package:flutter_full_course/config/app_icons.dart';
-import 'package:flutter_full_course/config/app_strings.dart';
-import 'package:flutter_full_course/provider/user_provider.dart';
+import 'package:ecosync_app/components/toolbar.dart';
+import 'package:ecosync_app/components/user_page_item.dart';
+import 'package:ecosync_app/config/app_icons.dart';
+import 'package:ecosync_app/config/app_strings.dart';
+import 'package:ecosync_app/provider/user_provider.dart';
 import 'package:flutter_map/plugin_api.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:latlong2/latlong.dart';

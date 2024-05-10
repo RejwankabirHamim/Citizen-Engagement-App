@@ -1,4 +1,4 @@
-import 'package:flutter_full_course/data/model/user.dart';
+import 'package:ecosync_app/data/model/user.dart';
 
 class Post {
   final int? id;

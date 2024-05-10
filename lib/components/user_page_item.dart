@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_full_course/components/user_avatar.dart';
-import 'package:flutter_full_course/data/model/user.dart';
-import 'package:flutter_full_course/styles/app_colors.dart';
-import 'package:flutter_full_course/styles/app_text.dart';
+import 'package:ecosync_app/components/user_avatar.dart';
+import 'package:ecosync_app/data/model/user.dart';
+import 'package:ecosync_app/styles/app_colors.dart';
+import 'package:ecosync_app/styles/app_text.dart';
 
 class UserPageItem extends StatelessWidget {
   final User user;
