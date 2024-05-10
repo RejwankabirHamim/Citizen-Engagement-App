@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: AppColors.background,
         brightness: Brightness.dark,
       ),
-      initialRoute: AppRoutes.login,
+      initialRoute: AppRoutes.main,
       routes: AppRoutes.pages,
     );
   }
