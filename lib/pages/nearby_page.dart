@@ -37,10 +37,10 @@ class _NearbyPageState extends State<NearbyPage> {
       body: FutureBuilder(
         future: futureUsers,
         builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return Center(child: CircularProgressIndicator());
-          }
-          final users = snapshot.data!;
+          // if (!snapshot.hasData) {
+          //   return Center(child: CircularProgressIndicator());
+          // }
+          //final users = snapshot.data!;
           return Stack(
             children: [
               FlutterMap(
@@ -53,65 +53,65 @@ class _NearbyPageState extends State<NearbyPage> {
                     userAgentPackageName: 'dev.ces.flutter',
                     // tileProvider: NetworkTileProvider(),
                   ),
-                  MarkerLayer(
-                    markers: users
-                        .map((user) => Marker(
-                              width: 200,
-                              height: 100,
-                              point: LatLng(user.location?.lat ?? 0,
-                                  user.location?.lng ?? 0),
-                              builder: (context) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    var page = 0;
-                                    for (var i = 0; i < users.length; i++) {
-                                      if (users[i].id == user.id) {
-                                        page = i;
-                                        break;
-                                      }
-                                    }
-                                    pageController.animateToPage(page,
-                                        duration: Duration(milliseconds: 1000),
-                                        curve: Curves.easeIn);
-                                  },
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 8, vertical: 4),
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(14))),
-                                        child: Text(
-                                          '${user.firstname} ${user.lastname}',
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                      ),
-                                      CustomPaint(
-                                        painter: MarkerPainter(),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(2.0),
-                                          child: ClipPath(
-                                            clipper: MarkerClipper(),
-                                            child: SizedBox(
-                                              width: 48,
-                                              height: 60,
-                                              child: Image.asset(
-                                                'assets/temp/user1.png',
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            ))
-                        .toList(),
-                  ),
+                  // MarkerLayer(
+                  //   markers: users
+                  //       .map((user) => Marker(
+                  //             width: 200,
+                  //             height: 100,
+                  //             point: LatLng(user.location?.lat ?? 0,
+                  //                 user.location?.lng ?? 0),
+                  //             builder: (context) {
+                  //               return GestureDetector(
+                  //                 onTap: () {
+                  //                   var page = 0;
+                  //                   for (var i = 0; i < users.length; i++) {
+                  //                     if (users[i].id == user.id) {
+                  //                       page = i;
+                  //                       break;
+                  //                     }
+                  //                   }
+                  //                   pageController.animateToPage(page,
+                  //                       duration: Duration(milliseconds: 1000),
+                  //                       curve: Curves.easeIn);
+                  //                 },
+                  //                 child: Column(
+                  //                   children: [
+                  //                     Container(
+                  //                       padding: const EdgeInsets.symmetric(
+                  //                           horizontal: 8, vertical: 4),
+                  //                       decoration: BoxDecoration(
+                  //                           color: Colors.white,
+                  //                           borderRadius: BorderRadius.all(
+                  //                               Radius.circular(14))),
+                  //                       child: Text(
+                  //                         '${user.firstname} ${user.lastname}',
+                  //                         style: TextStyle(color: Colors.black),
+                  //                       ),
+                  //                     ),
+                  //                     CustomPaint(
+                  //                       painter: MarkerPainter(),
+                  //                       child: Padding(
+                  //                         padding: const EdgeInsets.all(2.0),
+                  //                         child: ClipPath(
+                  //                           clipper: MarkerClipper(),
+                  //                           child: SizedBox(
+                  //                             width: 48,
+                  //                             height: 60,
+                  //                             child: Image.asset(
+                  //                               'assets/temp/user1.png',
+                  //                               fit: BoxFit.cover,
+                  //                             ),
+                  //                           ),
+                  //                         ),
+                  //                       ),
+                  //                     ),
+                  //                   ],
+                  //                 ),
+                  //               );
+                  //             },
+                  //           ))
+                  //       .toList(),
+                  // ),
                 ],
               ),
               Positioned(
@@ -122,7 +122,7 @@ class _NearbyPageState extends State<NearbyPage> {
                   height: 250,
                   child: PageView(
                     controller: pageController,
-                    children: users.map((e) => UserPageItem(user: e)).toList(),
+                   // children: users.map((e) => UserPageItem(user: e)).toList(),
                   ),
                 ),
               )

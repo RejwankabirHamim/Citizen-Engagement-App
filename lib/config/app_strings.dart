@@ -34,4 +34,13 @@ class AppStrings {
 
   static const gender = 'Gender';
   static const nearby = 'Nearby';
+
+  static const String registerWelcome = 'Welcome to Registration';
+  static const String registerToJoin = 'Register to join our community';
+  static const String wardNumber = 'Ward Number';
+  static const String latitude = 'Latitude';
+  static const String longitude = 'Longitude';
+  static const String email = 'Email';
+  static const String register = 'Register';
+  static const String alreadyHaveAccount = 'Already have an account?';
 }

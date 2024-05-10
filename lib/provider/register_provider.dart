@@ -1,14 +1,25 @@
 import 'package:ecosync_app/data/model/user.dart';
-import 'package:ecosync_app/data/service/register_service.dart';
 import 'package:flutter/material.dart';
+import 'package:ecosync_app/data/service/register_service.dart';
 
 class RegisterProvider extends ChangeNotifier {
-  var username = '';
-  var email = '';
-  var password = '';
+  String firstName = '';
+  String lastName = '';
+  String wardNumber = '';
+  String latitude = '';
+  String longitude = '';
+  String email = '';
+  String password = '';
 
-  Future<User> register() async {
-    final response = await RegisterService(username, email, password).call();
-    return response;
+  void register() {
+   RegisterService(
+      firstName,
+      lastName,
+      wardNumber,
+      latitude,
+      longitude,
+      email,
+      password,
+    ).call();
   }
 }
