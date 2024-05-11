@@ -33,4 +33,5 @@ class AppRoutes {
   static const user = '/user';
   static const register='/register';
   static const report='/report';
+  
 }
