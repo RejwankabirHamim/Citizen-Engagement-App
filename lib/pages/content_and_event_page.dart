@@ -58,7 +58,45 @@ class _ContentAndEventCardState extends State<ContentAndEventCard> {
                   // Handle upvote action
                 },
               ),
-              Text('123'), // Replace with the actual upvote count
+              Text('3'), // Replace with the actual upvote count
+              IconButton(
+                icon: Icon(Icons.arrow_downward),
+                onPressed: () {
+                  // Handle downvote action
+                },
+              ),
+ // Replace with the actual downvote count
+            ],
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: TextButton(
+              onPressed: () {
+                setState(() {
+                  isExpanded = !isExpanded;
+                });
+              },
+              child: Text(isExpanded ? 'Show Less' : 'Show More'),
+            ),
+          ),
+          ListTile(
+            title:Text('Event Notification'),
+            subtitle: Text(
+              'We have a event in Mohakhali next day, where our honourable Mayor will join with us',
+              maxLines: isExpanded ? 100 : 3,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                icon: Icon(Icons.arrow_upward),
+                onPressed: () {
+                  // Handle upvote action
+                },
+              ),
+              Text('5'), // Replace with the actual upvote count
               IconButton(
                 icon: Icon(Icons.arrow_downward),
                 onPressed: () {

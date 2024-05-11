@@ -1,6 +1,6 @@
 class AppStrings {
   static const appName = '5minuteflutter';
-  static const helloWelcome = 'Hello, welcome to Ecosync!';
+  static const helloWelcome = 'Hello, welcome to our Citizen Engagement App!';
   static const loginToContinue = 'Login to continue';
   static const username = 'Username';
   static const password = 'Password';

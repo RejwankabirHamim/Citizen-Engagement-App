@@ -1,3 +1,3 @@
 class AppConfig {
-  static const baseUrl = 'http://localhost:8080';
+  static const baseUrl = 'https://cs24-p2-vanga-boyz.onrender.com/household';
 }

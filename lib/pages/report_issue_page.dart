@@ -1,3 +1,4 @@
+import 'package:ecosync_app/config/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class ReportIssuePage extends StatefulWidget {
@@ -66,6 +67,8 @@ class _ReportIssuePageState extends State<ReportIssuePage> {
             // TODO: Add photo attachment feature
             ElevatedButton(
               onPressed: () {
+                Navigator.of(context)
+                            .pushReplacementNamed(AppRoutes.main);
                 // TODO: Handle form submission
                 // Include selectedIssueType, description, and other details in the report
               },

@@ -1,17 +1,23 @@
+import 'package:ecosync_app/config/app_config.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 import 'package:ecosync_app/data/model/user.dart';
 import 'package:ecosync_app/pages/register_page.dart';
-import 'package:flutter/material.dart';
 import 'package:ecosync_app/config/app_icons.dart';
 import 'package:ecosync_app/config/app_routes.dart';
 import 'package:ecosync_app/config/app_strings.dart';
 import 'package:ecosync_app/provider/app_repo.dart';
-
 import 'package:ecosync_app/provider/login_provider.dart';
-
-import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
+
+  // Add controller to capture email and password input
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +34,7 @@ class LoginPage extends StatelessWidget {
                   AppStrings.helloWelcome,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 22,
+                    fontSize: 26,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -43,9 +49,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 Spacer(),
                 TextField(
-                  onChanged: (value) {
-                    context.read<LoginProvider>().username = value;
-                  },
+                  controller: _emailController,
                   decoration: InputDecoration(
                     hintText: AppStrings.username,
                     border: OutlineInputBorder(
@@ -58,9 +62,7 @@ class LoginPage extends StatelessWidget {
                   height: 16,
                 ),
                 TextField(
-                  onChanged: (value) {
-                    context.read<LoginProvider>().password = value;
-                  },
+                  controller: _passwordController,
                   decoration: InputDecoration(
                     hintText: AppStrings.password,
                     border: OutlineInputBorder(
@@ -88,26 +90,50 @@ class LoginPage extends StatelessWidget {
                   height: 48,
                   width: double.infinity,
                   child: ElevatedButton(
-                      onPressed: () {
+                    onPressed: () async {
+                      // Use controllers to get the email and password
+                      String email = _emailController.text;
+                      String password = _passwordController.text;
 
-                        // Attempt to log in
-                        context.read<LoginProvider>().login().then((value) {
-                          // Hide loading indicator
+                      // Construct the request payload
+                      var payload = json.encode({
+                        'email': email,
+                        'password': password,
+                      });
+
+                      try {
+                        // Post email and password to the server
+                        var response = await http.post(
+                          Uri.parse(
+                              '${AppConfig.baseUrl}/login'), // Replace with your endpoint
+                          headers: {'Content-Type': 'application/json'},
+                          body: payload,
+                        );
+                        print(response.statusCode);
+
+                        if (response.statusCode == 200) {
+                          // Parse the response body
+                          var data = json.decode(response.body);
 
                           // Update the AppRepo with user details and token
-                          context.read<AppRepo>().user = value.user;
-                          context.read<AppRepo>().token = value.token;
 
                           // Navigate to the main page
                           Navigator.of(context)
                               .pushReplacementNamed(AppRoutes.main);
-                        }).catchError((error) {
-
-                          // Handle errors, possibly showing a dialog or a Snackbar
+                        } else {
+                          // Show invalid email and password
                           ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Login Failed: $error')));
-                        });
-                      },
+                            SnackBar(
+                                content: Text('Invalid email or password')),
+                          );
+                        }
+                      } catch (error) {
+                        // Handle other errors, possibly showing a dialog or a Snackbar
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Login Failed: $error')),
+                        );
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(255, 98, 138, 225),
                       foregroundColor: Color.fromARGB(255, 0, 0, 0),
@@ -117,18 +143,18 @@ class LoginPage extends StatelessWidget {
                 ),
                 Spacer(),
                 Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Don't have an account?"),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context)
-                              .pushReplacementNamed(AppRoutes.register);
-                        },
-                        child: const Text("Signup"),
-                      ),
-                    ],
-                  ),
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Don't have an account?"),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context)
+                            .pushReplacementNamed(AppRoutes.register);
+                      },
+                      child: const Text("Signup"),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
