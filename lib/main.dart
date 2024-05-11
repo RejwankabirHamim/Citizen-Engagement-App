@@ -12,12 +12,6 @@ void main() {
       ChangeNotifierProvider<AppRepo>(
         create: (context) => AppRepo(),
       ),
-      ChangeNotifierProvider<PostProvider>(
-        create: (context) => PostProvider(),
-      ),
-      ChangeNotifierProvider(
-        create: (context) => UserProvider(),
-      )
     ],
     child: MyApp(),
   ));
@@ -28,8 +22,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromARGB(255, 4, 135, 241), // Set your desired button color here
+            // Other button styles (text color, padding, etc.) can be customized as well
+          ),
+        ),
         fontFamily: 'Urbanist',
-        scaffoldBackgroundColor: AppColors.background,
+        scaffoldBackgroundColor: Color.fromARGB(142, 23, 0, 97),
         brightness: Brightness.dark,
       ),
       initialRoute: AppRoutes.main,
