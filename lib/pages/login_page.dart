@@ -51,7 +51,7 @@ class LoginPage extends StatelessWidget {
                 TextField(
                   controller: _emailController,
                   decoration: InputDecoration(
-                    hintText: AppStrings.username,
+                    hintText: AppStrings.email,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12))),
                     filled: true,
@@ -100,7 +100,8 @@ class LoginPage extends StatelessWidget {
                         'email': email,
                         'password': password,
                       });
-
+                      // Navigator.of(context)
+                      //         .pushReplacementNamed(AppRoutes.main);
                       try {
                         // Post email and password to the server
                         var response = await http.post(
@@ -109,7 +110,7 @@ class LoginPage extends StatelessWidget {
                           headers: {'Content-Type': 'application/json'},
                           body: payload,
                         );
-                        print(response.statusCode);
+                        //print(response.statusCode);
 
                         if (response.statusCode == 200) {
                           // Parse the response body
